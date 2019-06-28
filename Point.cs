@@ -22,7 +22,7 @@ namespace Snake
             this.y = y;
             this.symbol = symbol;
         }
-        public void PrintSymbol()
+        public void Draw()
         {
             Console.SetCursorPosition(x, y);
             Console.Write(symbol);
