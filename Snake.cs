@@ -45,6 +45,31 @@ namespace Snake
             return nextPoint;
         }
 
+        internal bool Eat(Point food)
+        {
+            Point head = GetNextPoint();
+            if (head.IsHit(food))
+            {
+                food.symbol = head.symbol;
+                food.Draw();
+                pList.Add(food);
+                return true;
+            }
+            else
+                return false;
+        }
+
+        internal bool IsOnSnake( Point p)
+        {
+            foreach (Point s in this.pList)
+            {
+                if (s.x == p.x && s.y == p.y)
+                {
+                    return true;                   
+                }                   
+            }
+            return false;
+        }
         public void HandleKey(ConsoleKey key)
         {
             if (key == ConsoleKey.LeftArrow)
