@@ -13,18 +13,11 @@ namespace Snake
         {
 
             Console.SetWindowSize(80, 25);
+            Walls walls = new Walls(80, 25);
+            walls.Draw();
             
 
-            // Draw Border
-            HorizontalLine upLine = new HorizontalLine(1, 78, 0, '+');
-            HorizontalLine downLine = new HorizontalLine(1, 78, 24, '+');
-            VertikalLine leftLine = new VertikalLine(0, 0, 24, '+');
-            VertikalLine rightLine = new VertikalLine(78, 0, 24, '+');
 
-            upLine.Draw();
-            downLine.Draw();
-            leftLine.Draw();
-            rightLine.Draw();
 
             // Point Drawing
             Point p = new Point(4, 5, '*');
@@ -37,6 +30,10 @@ namespace Snake
 
             while (true)
             {
+                if(walls.isHit(snake) || snake.IsHitTail())
+                {
+                    break;
+                }
                 food.Draw();
                 if (snake.Eat(food))
                 {
